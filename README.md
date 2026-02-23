@@ -2,7 +2,7 @@
 
 **A dark neon glow design system for Bootstrap and Tailwind CSS.**
 
-4 color palettes. 3 intensity levels. Pure CSS custom properties. Zero dependencies. Works everywhere.
+10 color palettes. 3 intensity levels. Pure CSS custom properties. Zero dependencies. Works everywhere.
 
 [![npm version](https://badge.fury.io/js/neon-glow-css.svg)](https://www.npmjs.com/package/neon-glow-css)
 

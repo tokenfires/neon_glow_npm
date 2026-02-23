@@ -1,6 +1,6 @@
 {
   "name": "neon-glow-css",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A dark neon glow design system for Bootstrap and Tailwind CSS. 4 color palettes, 3 intensity levels, pure CSS custom properties.",
   "main": "css/neon-glow.css",
   "style": "css/neon-glow.css",
