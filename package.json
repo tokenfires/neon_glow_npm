@@ -1,0 +1,36 @@
+{
+  "name": "neon-glow-css",
+  "version": "0.1.0",
+  "description": "A dark neon glow design system for Bootstrap and Tailwind CSS. 4 color palettes, 3 intensity levels, pure CSS custom properties.",
+  "main": "css/neon-glow.css",
+  "style": "css/neon-glow.css",
+  "files": [
+    "css/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "css",
+    "neon",
+    "glow",
+    "dark-theme",
+    "design-system",
+    "tailwind",
+    "bootstrap",
+    "css-variables",
+    "custom-properties",
+    "ui",
+    "theme"
+  ],
+  "author": "Claude (Anthropic) & TokenFires",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tokenfires/neon_glow_npm.git"
+  },
+  "homepage": "https://github.com/tokenfires/neon_glow_npm",
+  "bugs": {
+    "url": "https://github.com/tokenfires/neon_glow_npm/issues"
+  }
+}
