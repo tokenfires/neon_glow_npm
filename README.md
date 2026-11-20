@@ -2,7 +2,7 @@
 
 **A dark neon glow design system for Bootstrap and Tailwind CSS.**
 
-10 color palettes. 3 intensity levels. Pure CSS custom properties. Zero dependencies. Works everywhere.
+12 color palettes. 4 intensity levels. Pure CSS custom properties. Zero runtime dependencies. Works everywhere.
 
 [![npm version](https://badge.fury.io/js/neon-glow-css.svg)](https://www.npmjs.com/package/neon-glow-css)
 
@@ -58,7 +58,7 @@ import "neon-glow-css/css/neon-glow.css";
 ### Via CDN (unpkg)
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/neon-glow-css/css/neon-glow.css">
+<link rel="stylesheet" href="https://unpkg.com/neon-glow-css@0.3.0/css/neon-glow.css">
 ```
 
 ### Plain HTML
@@ -110,6 +110,8 @@ Add palette and intensity classes to your `<body>`:
 | Class | Palette | Vibe |
 |-------|---------|------|
 | `neon-vfd` | **VFD Display** | Monochromatic phosphor glow with adjustable hue. |
+| `neon-cherenkov` | **Cherenkov** | Deep blue light, reactor pools, and instrument panels. |
+| `neon-nixie` | **Nixie** | Warm orange tubes with a violet mercury glow. |
 
 Add a VFD preset: `<body class="neon-glow-body neon-vfd neon-vfd-amber neon-medium">`
 
@@ -123,19 +125,40 @@ Or set any hue: `style="--ng-vfd-hue: 45"`
 |-------|-------------|
 | `neon-subtle` | Gentle glow. Professional. Easy on the eyes. |
 | `neon-medium` | Balanced glow. The sweet spot for most apps. |
-| `neon-intense` | Maximum glow. Over the top. The WOW factor. |
+| `neon-intense` | Strong glow for expressive interfaces. |
+| `neon-overdrive` | Extended bloom for luminous hardware palettes and high-impact displays. |
 
 ---
+
+## Typography and Nixie Effects
+
+Palette-specific font stacks are included in the tokens. The stylesheet imports Google Fonts; system fonts remain available as fallbacks. Tailwind v4 removes remote CSS imports, so add this link to your HTML `<head>` when using Tailwind:
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=B612+Mono:wght@400;700&amp;family=Montserrat+Underline:wght@400;700&amp;family=Orbitron:wght@400;700&amp;family=Syncopate:wght@400;700&amp;family=Space+Grotesk:wght@400;700&amp;family=Rubik+Glitch&amp;family=VT323&amp;family=Megrim&amp;family=Special+Elite&amp;display=swap">
+```
+
+These packages contain CSS only. The demo's theme picker and automatic Nixie character wrapping are application JavaScript, not part of either package. Nixie card headings have a CSS fallback; for individual tube cells, wrap characters explicitly:
+
+```html
+<body class="neon-glow-body neon-nixie neon-medium">
+  <span class="ng-nixie-digit">4</span><span class="ng-nixie-digit">2</span>
+</body>
+```
+
+Keep palette and intensity classes on `<body>`, alongside `neon-glow-body`, so the token values inherit consistently.
 
 ## Switching Themes at Runtime
 
 Swap classes on `<body>` -- all colors cascade instantly via CSS custom properties:
 
 ```javascript
-document.body.classList.remove("neon-rainbow", "neon-unicorn", "neon-cinematic", "neon-pink");
+const palettes = ["rainbow", "unicorn", "cinematic", "pink", "retrowave", "grunge",
+  "y2k", "social", "cyberpunk", "vfd", "cherenkov", "nixie"];
+document.body.classList.remove(...palettes.map(name => `neon-${name}`));
 document.body.classList.add("neon-cinematic");
 
-document.body.classList.remove("neon-subtle", "neon-medium", "neon-intense");
+document.body.classList.remove("neon-subtle", "neon-medium", "neon-intense", "neon-overdrive");
 document.body.classList.add("neon-intense");
 ```
 
@@ -204,6 +227,12 @@ See the full kitchen sink demo with all components and palettes:
 **[rails_neon_glow](https://github.com/tokenfires/rails_neon_glow)** -- Rails app with Tailwind and Bootstrap showcases.
 
 ---
+
+## Development and Verification
+
+The CSS is copied verbatim from [`rails_neon_glow` at `6b6e419`](https://github.com/tokenfires/rails_neon_glow/tree/6b6e419f11104b7eb376802178ee9b7a5dfe9978). When syncing a later demo revision, update both stylesheets and the reference commit in CI together.
+
+With Node 24, run `npm ci`, `npx playwright install chromium`, and `npm test`. The tests build an npm tarball and load its actual CSS in Chromium across all 12 palettes and four intensities. `npm audit` checks the development tools; the published styles have no runtime dependencies.
 
 ## Design
 
