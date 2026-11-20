@@ -12,7 +12,7 @@ import postcss from 'postcss';
 test('the npm tarball loads all palettes and intensities in a browser', async t => {
   const temp = mkdtempSync(join(tmpdir(), 'neon-glow-package-'));
   t.after(() => rmSync(temp, { recursive: true, force: true }));
-  const [pack] = JSON.parse(execFileSync('npm', ['pack', '--json', '--ignore-scripts', '--pack-destination', temp], { encoding: 'utf8' }));
+  const [pack] = JSON.parse(execFileSync('npm', ['pack', '--json', '--ignore-scripts', '--dry-run=false', '--pack-destination', temp], { encoding: 'utf8' }));
   execFileSync('tar', ['-xzf', join(temp, pack.filename), '-C', temp]);
   const packaged = file => readFileSync(join(temp, 'package', file), 'utf8');
   const metadata = JSON.parse(packaged('package.json'));

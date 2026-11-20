@@ -39,5 +39,5 @@ jobs:
         run: npm audit
       - name: Install test browser
         run: npx playwright install --with-deps chromium
-      - name: Test the built npm package in a browser
-        run: npm test
+      - name: Verify release packaging and browser rendering
+        run: npm publish --dry-run
